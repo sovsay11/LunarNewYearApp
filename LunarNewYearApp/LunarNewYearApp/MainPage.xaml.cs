@@ -14,20 +14,20 @@ namespace LunarNewYearApp
     public partial class MainPage : ContentPage
     {
         // Dictionary holds image paths and associated birthstones
-        Dictionary<string, string> birthStones = new Dictionary<string, string>()
+        Dictionary<string, string> animals = new Dictionary<string, string>()
         {
-            { "Garnet", "garnet.png"},
-            { "Amethyst", "amethyst.png"},
-            { "Aquamarine", "aquamarine.png"},
-            { "Diamond", "diamond.png"},
-            { "Emerald", "emerald.png"},
-            { "Alexandrite", "alexandrite.png"},
-            { "Ruby", "ruby.png"},
-            { "Peridot", "peridot.png"},
-            { "Sapphire", "sapphire.png"},
-            { "Pink Tourmaline", "pinkTourmaline.png"},
-            { "Topaz", "topaz.png"},
-            { "Blue Topaz", "blueTopaz.png"}
+            { "Monkey", "monkey.png"},
+            { "Rooster", "rooster.png"},
+            { "Dog", "dog.png"},
+            { "Pig", "pig.png"},
+            { "Rat", "rat.png"},
+            { "Ox", "ox.png"},
+            { "Tiger", "tiger.png"},
+            { "Rabbit", "rabbit.png"},
+            { "Dragon", "dragon.png"},
+            { "Snake", "snake.png"},
+            { "Horse", "horse.png"},
+            { "Goat", "goat.png"},
         };
 
         public MainPage()
@@ -36,19 +36,33 @@ namespace LunarNewYearApp
         }
 
         /// <summary>
-        /// Grabs user input from the picker and compares the selected index value
-        /// to the dictionary above. Then displays the associated image and gem name.
+        /// Whenever the user presses enter (the complete key), grab the
+        /// year and figure out which animal belongs to it
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PckrMonths_SelectedIndexChanged(object sender, EventArgs e)
+        private void EntYear_Completed(object sender, EventArgs e)
         {
-            int selectedIndex = PckrMonths.SelectedIndex;
-            string gemName = birthStones.Keys.ElementAt(selectedIndex);
-            string gemPath = birthStones.Values.ElementAt(selectedIndex);
+            // Grab the year
+            int year = 0;
+            try
+            {
+                year = int.Parse(EntYear.Text);
+            }
+            catch (Exception)
+            {
+                DisplayAlert("Error", "Please enter a valid number!", "Close");
+            }
+            
+            // Convert the year to a numerical value to use in the dictionary
+            int index = year % 12;
 
-            LblBirthStone.Text = $"{gemName}!";
-            ImgGems.Source = gemPath;
+            // Display results
+            string animalName = animals.Keys.ElementAt(index);
+            string animalPath = animals.Values.ElementAt(index);
+
+            LblAnimal.Text = $"{animalName}";
+            ImgAnimal.Source = animalPath;
         }
     }
 }

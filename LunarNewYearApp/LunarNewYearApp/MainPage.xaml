@@ -7,7 +7,7 @@
         <!--Title section-->
         <Frame BackgroundColor="LightGray"
                BorderColor="Black">
-            <Label Text="Noah's Birthstone App"
+            <Label Text="Noah's Lunar New Year App"
                    FontSize="Title"
                    HorizontalTextAlignment="Center"
                    TextColor="Black" />
@@ -17,43 +17,34 @@
         <Frame CornerRadius="10"
                Margin="15"
                BorderColor="Black">
-            <Picker x:Name="PckrMonths"
-                    Title="Select a month"
-                    TextColor="Black"
-                    HorizontalTextAlignment="Center"
-                    FontSize="Medium"
-                    SelectedIndexChanged="PckrMonths_SelectedIndexChanged">
-                <Picker.Items>
-                    <x:String>January</x:String>
-                    <x:String>February</x:String>
-                    <x:String>March</x:String>
-                    <x:String>April</x:String>
-                    <x:String>May</x:String>
-                    <x:String>June</x:String>
-                    <x:String>July</x:String>
-                    <x:String>August</x:String>
-                    <x:String>September</x:String>
-                    <x:String>October</x:String>
-                    <x:String>November</x:String>
-                    <x:String>December</x:String>
-                </Picker.Items>
-            </Picker>
+            <StackLayout>
+                <Entry x:Name="EntYear"
+                       Placeholder="Please enter your birth year"
+                       HorizontalTextAlignment="Center"
+                       Keyboard="Numeric"
+                       Completed="EntYear_Completed" />
+            </StackLayout>
         </Frame>
 
         <!--Label and image to show associated birth stone-->
-        <Frame x:Name="FrameBirthstone"
-               CornerRadius="10"
+        <Frame CornerRadius="10"
                Margin="15"
                BorderColor="Black">
             <StackLayout>
-                <Label x:Name="LblBirthStone"
-                       Text="Your birthstone is a(n)..."
+                <Label x:Name="LblAnimal"
+                       Text="Your Lunar New Year animal is a(n)..."
                        FontSize="Medium"
                        TextColor="Black"
                        HorizontalTextAlignment="Center"
                        Margin="0, 0, 0, 20" />
-                <Image x:Name="ImgGems"
-                       WidthRequest="200" />
+                <Frame CornerRadius="30"
+                       Padding="0"
+                       HorizontalOptions="Center"
+                       IsClippedToBounds="True">
+                    <Image x:Name="ImgAnimal"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Frame>
             </StackLayout>
         </Frame>
 
